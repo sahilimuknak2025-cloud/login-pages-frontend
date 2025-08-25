@@ -29,7 +29,8 @@ export class Login7 {
       password: ['', [
         Validators.required,
         Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).+$/)
-      ]]
+      ]],
+      remember: [false]   
     });
 
     this.signupForm = this.fb.group({
