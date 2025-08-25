@@ -1,0 +1,74 @@
+<div class="login-page">
+    <div class="container login-container shadow-sm rounded-4">
+        <div class="row g-0">
+            <div class="col-12 col-md-6 p-5 login-form">
+                <div class="brand mb-4">
+                    <img src="assets/test_images/jodetx-logo.svg" alt="Jodetx Logo" class="logo" />
+                </div>
+                <p>Please login to your account</p>
+
+
+                <form [formGroup]="userForm" (ngSubmit)="onSaveUser()">
+                    <div class="mb-3">
+                        <label>Email Address</label>
+                        <input type="email" class="form-control" formControlName="email"
+                            placeholder="Enter your email" />
+                        <div *ngIf="userForm.get('email')?.touched && userForm.get('email')?.invalid">
+                            <small *ngIf="userForm.get('email')?.errors?.['required']" class="text-danger">Email is required.</small>
+                            <small *ngIf="userForm.get('email')?.errors?.['invalidCharacters']"
+                                class="text-danger">Email contains invalid characters.</small>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Password</label>
+                        <div class="input-group">
+                            <input [type]="showPassword ? 'text' : 'password'" class="form-control"
+                                formControlName="password" placeholder="Enter your password" />
+                            <span class="input-group-text" style="cursor: pointer;" (click)="togglePassword()">
+                                <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+                            </span>
+                        </div>
+
+                        <div *ngIf="userForm.get('password')?.touched && userForm.get('password')?.invalid"
+                            class="mt-1">
+                            <small *ngIf="userForm.get('password')?.errors?.['required']" class="text-danger">
+                                Password is required
+                            </small>
+                            <small *ngIf="userForm.get('password')?.errors?.['pattern']" class="text-danger">
+                                Must contain uppercase, lowercase, number & special character
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <input type="checkbox"> Remember me
+                        </div>
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                    <button class="btn w-100">Login</button>
+                    <div class="mt-2">
+                        <p>
+                            Don’t have an account with Jodetx?
+                            <a href="/sign-up" class="text-primary" style="text-decoration:none;">Sign Up</a>
+                        </p>
+
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-md-6 d-none d-md-flex flex-column justify-content-center info-box p-4 text-center">
+                <h2>Welcome To Jodetx</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Explicabo accusamus consequatur distinctio ratione dolorum reprehenderit unde sunt itaque, veniam
+                    perferendis esse dicta ducimus blanditiis totam veritatis, consequuntur atque similique deserunt.
+                </p>
+                <div class="social-btns">
+                    <button class="facebook">Facebook</button>
+                    <button class="twitter">Twitter</button>
+                    <button class="google">Google</button>
+                </div>
+            </div>
+        </div>
+    </div>

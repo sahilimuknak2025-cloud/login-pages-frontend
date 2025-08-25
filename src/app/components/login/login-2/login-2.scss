@@ -1,0 +1,44 @@
+.main-box {
+  max-width: 1000px;
+}
+
+.left-panel {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+}
+
+
+.feature-icon {
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.login-box {
+  max-width: 450px;
+}
+
+.btn svg {
+  vertical-align: middle;
+}
+
+.btn-info {
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  border: none;
+}
+
+.btn-info:hover {
+  background: linear-gradient(90deg, #0072ff, #00c6ff);
+}
+
+a {
+  transition: color 0.2s;
+}
+a:hover {
+  color: #0056b3 !important;
+}
+
+
+.logo {
+  height: 50px;  
+  width: auto;
+  object-fit: contain;
+}

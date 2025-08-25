@@ -1,0 +1,105 @@
+<div class="d-flex justify-content-center align-items-center vh-100"
+    style="background: url('assets/test_images/login1.avif') no-repeat center center fixed; background-size: cover;">
+    <div class="col-md-6 d-none d-md-flex flex-column justify-content-start px-5 text-white">
+        <img src="assets/test_images/jodetx-logo.svg" alt="Logo" class="mb-4" style="width: 120px;">
+
+        <h2 class="mt-5" style="color: aliceblue;">
+            Join <span class="text-success">8 Million</span> Businesses that Trust <br />
+            Jodetx to Supercharge their Business
+        </h2>
+
+        <ul class="mt-4 list-unstyled">
+            <li class="mb-2">✔ 100+ Payment Methods</li>
+            <li class="mb-2">✔ Easy Integration</li>
+            <li class="mb-2">✔ Powerful Dashboard</li>
+        </ul>
+    </div>
+
+
+    <div class="col-md-6 d-flex align-items-center">
+        <div class="card shadow-lg px-5 py-3 rounded-4" style="width: 100%; max-width: 500px;">
+            <div class="text-center mb-3">
+                <img src="assets/test_images/jodetx-logo.svg" alt="App Logo" style="width: 80px;">
+                <h5 class="mt-3">Create your account</h5>
+            </div>
+            <div class="mt-1">
+                <p>
+                    Already have an account?
+                    <a href="login/login1" class="text-primary" style="text-decoration:none;">Login</a>
+                </p>
+
+            </div>
+            <h4 class="fw-bold mb-3">Sign Up</h4>
+
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                <div class="mb-3">
+                    <label>Email</label>
+                    <input type="text" class="form-control p-2 mt-1" formControlName="email"
+                        placeholder="Enter your email id" />
+                    <div *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.invalid">
+                        <small *ngIf="signupForm.get('email')?.errors?.['required']" class="text-danger">Email is
+                            required.</small>
+                        <small *ngIf="signupForm.get('email')?.errors?.['invalidCharacters']" class="text-danger">Email
+                            contains invalid characters.</small>
+                        <small *ngIf="signupForm.get('email')?.errors?.['firstLetterUppercase']" class="text-danger">
+                            First letter of email cannot be uppercase.
+                        </small>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label>Mobile Number</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control p-2 mt-1" formControlName="phone"
+                            placeholder="Enter your 10 digit mobile number" />
+                        <!-- <div *ngIf="signupForm.get('phone')?.invalid && signupForm.get('phone')?.touched">
+                            <small>Phone is required</small>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label>Set a Password</label>
+                    <input type="password" class="form-control p-2 mt-1" formControlName="password"
+                        placeholder="New Password" />
+                    <div *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.invalid"
+                        class="mt-1">
+                        <small *ngIf="signupForm.get('password')?.errors?.['required']" class="text-danger">
+                            Password is required
+                        </small>
+                        <small *ngIf="signupForm.get('password')?.errors?.['pattern']" class="text-danger">
+                            Must contain uppercase, lowercase, number & special character
+                        </small>
+                    </div>
+                </div>
+
+
+                <button type="submit" class="btn btn-primary w-100 p-2 fw-bold mt-1" [disabled]="signupForm.invalid">
+                    Sign Up
+                </button>
+
+
+
+                <div class="text-center my-3">or</div>
+
+                <button type="button" class="btn btn-outline-dark w-100 p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 533.5 544.3"
+                        class="me-2">
+                        <path fill="#4285F4"
+                            d="M533.5 278.4c0-17.4-1.5-34-4.4-50.2H272.1v95.1h147.3c-6.3 34-25 62.8-53.4 82v67h86.2c50.5-46.5 81.3-114.8 81.3-194z" />
+                        <path fill="#34A853"
+                            d="M272.1 544.3c72.5 0 133.4-23.9 177.8-64.8l-86.2-67c-23.9 16-54.4 25.7-91.6 25.7-70.4 0-130-47.5-151.3-111.1h-89.2v69.6c44 87 134.8 148.6 240.5 148.6z" />
+                        <path fill="#FBBC05"
+                            d="M120.8 327.1c-10.8-32-10.8-66.9 0-98.9v-69.6h-89.2C11.3 205.7 0 246.2 0 289s11.3 83.3 31.6 119.5l89.2-69.6z" />
+                        <path fill="#EA4335"
+                            d="M272.1 107.7c39.5 0 75.2 13.6 103.3 40.2l77.2-77.2C405.5 24.3 344.6 0 272.1 0 166.4 0 75.6 61.6 31.6 169.5l89.2 69.6c21.3-63.6 80.9-111.4 151.3-111.4z" />
+                    </svg>Continue with Google
+                </button>
+            </form>
+
+            <p class="mt-4 small text-center text-muted">
+                By continuing you agree to our
+                <a href="#" class="text-decoration-none">privacy policy</a> and
+                <a href="#" class="text-decoration-none">terms of use</a>.
+            </p>
+        </div>
+    </div>
+</div>

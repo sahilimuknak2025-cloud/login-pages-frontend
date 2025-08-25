@@ -1,0 +1,109 @@
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom,   #61daff, #656bff); 
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+}
+
+// .login-page {
+//   min-height: 100vh;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   background: linear-gradient(270deg, #61daff, #656bff, #ff61d2, #61ff8a);
+//   background-size: 800% 800%;
+//   animation: gradientAnimation 15s ease infinite;
+//   font-family: 'Poppins', sans-serif;
+//   position: relative;
+// }
+
+// @keyframes gradientAnimation {
+//   0% { background-position: 0% 50%; }
+//   50% { background-position: 100% 50%; }
+//   100% { background-position: 0% 50%; }
+// }
+
+
+.login-container {
+  position: relative;
+  max-width: 1000px;
+  width: 100%;
+  border-radius: 20px;
+  background: #fff;
+  padding: 40px;
+  box-shadow: 0px 15px 30px rgba(0,0,0,0.1);
+}
+
+
+.login-form h2 {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.login-form button {
+  background: linear-gradient(to right,   #61daff, #656bff);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+
+.info-box {
+  background: linear-gradient(to bottom right,   #61daff, #656bff);
+  color: #fff;
+  border-radius: 25px;
+  box-shadow: 0px 10px 22px rgba(0,0,0,0.25);
+  position: absolute;
+  top: 50%;
+  right: -70px; 
+  transform: translateY(-50%);
+  width: 500px;
+  min-height: 300px;
+  padding: 40px 30px;
+  text-align: center;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .info-box {
+    display: none;
+  }
+}
+
+.info-box h2 {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.info-box p {
+  margin-bottom: 20px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.social-btns button {
+  margin: 5px;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.facebook { background: #3b5998; }
+.twitter { background: #1da1f2; }
+.google  { background: #db4437; }
+
+
+
+.logo {
+  height: 50px;  
+  width: 150px;
+  object-fit: contain;
+}
+

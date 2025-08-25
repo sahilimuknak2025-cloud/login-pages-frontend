@@ -1,0 +1,75 @@
+<div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center p-2">
+  <div class="row w-100 shadow rounded-3 overflow-hidden main-box">
+
+
+    <div class="col-md-6 d-none d-md-flex left-panel flex-column justify-content-center p-5 text-white bg-dark">
+      <div class="brand mb-4">
+        <img src="assets/test_images/jodetx_white.svg" alt="Jodetx Logo" class="logo" style="max-width: 150px;" />
+      </div>
+
+      <ul class="list-unstyled mt-4">
+        <li class="mb-4 d-flex align-items-center">
+          <img src="assets/test_images/login2F1.svg" width="40" class="me-3 feature-icon" />
+          <span>Accept payments for <b>FREE</b></span>
+        </li>
+        <li class="mb-4 d-flex align-items-center">
+          <img src="assets/test_images/login2F2.svg" width="40" class="me-3 feature-icon" />
+          <span>Earn upto <b>12%</b> Interest</span>
+        </li>
+        <li class="d-flex align-items-center">
+          <img src="assets/test_images/login2F3.svg" width="40" class="me-3 feature-icon" />
+          <span>Get <b>Instant</b> Loans</span>
+        </li>
+      </ul>
+    </div>
+
+
+    <div class="col-12 col-md-6 bg-white p-4 p-md-5 login-box d-flex align-items-center justify-content-center">
+      <div class="w-100" style="max-width: 400px;">
+        <div class="text-end mb-2">
+          <a href="/sign-up" class="text-primary small">New to Jodetx?</a>
+        </div>
+        <h3 class="fw-bold mb-4 text-center text-md-start">Login with Username</h3>
+
+        <form [formGroup]="userForm" (ngSubmit)="onSaveUser()">
+          <div class="mb-3">
+            <input type="email" class="form-control p-2" placeholder="Email" formControlName="email">
+            <div *ngIf="userForm.get('email')?.touched && userForm.get('email')?.invalid">
+              <small *ngIf="userForm.get('email')?.errors?.['required']" class="text-danger">Email is required</small>
+              <small *ngIf="userForm.get('email')?.errors?.['invalidCharacters']" class="text-danger">Email contains
+                invalid characters.</small>
+            </div>
+          </div>
+
+          <div class="mb-3 position-relative">
+            <input [type]="showPassword ? 'text' : 'password'" class="form-control" formControlName="password"
+              placeholder="Password" style="padding-right: 2.5rem;">
+
+            <div *ngIf="userForm.get('password')?.touched && userForm.get('password')?.invalid" class="mt-1">
+              <small *ngIf="userForm.get('password')?.errors?.['required']" class="text-danger">Password is
+                required</small>
+             
+              <small *ngIf="userForm.get('password')?.errors?.['pattern']" class="text-danger">Password must include
+                uppercase, lowercase, number & special character</small>
+            </div>
+
+            <div class="text-end mt-1">
+              <a href="/forgot-password" class="text-primary small">Forgot Password</a>
+            </div>
+          </div>
+
+          <button class="btn btn-info w-100 p-2 fw-bold text-white">Login</button>
+
+          <div class="text-center my-3">or</div>
+          <button type="button" class="btn btn-outline-dark w-100 p-2">Continue with Google</button>
+        </form>
+
+        <p class="mt-4 small text-center text-muted">
+          By continuing you agree to our <a href="#" class="text-decoration-none">privacy policy</a> and <a href="#"
+            class="text-decoration-none">terms of use</a>.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>

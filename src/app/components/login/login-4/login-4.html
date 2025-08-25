@@ -1,0 +1,72 @@
+<div class="login-page"
+  style="background: url('assets/test_images/login4-bg-img.avif') no-repeat center center; background-size: cover;">
+  <div class="login-container">
+
+    <!-- Form Section -->
+    <div class="form-section">
+      <h4>Sign Into Your Account</h4>
+
+      <form [formGroup]="userForm" (ngSubmit)="onSaveUser()">
+        <div class="input-box">
+          <i class="fas fa-user"></i>
+          <input type="email" formControlName="email" placeholder="Enter Your Email" required>
+          <div *ngIf="userForm.get('email')?.touched && userForm.get('email')?.invalid">
+            <small *ngIf="userForm.get('email')?.errors?.['required']" class="text-danger">Email is required.</small>
+            <small *ngIf="userForm.get('email')?.errors?.['invalidCharacters']" class="text-danger">Invalid
+              characters.</small>
+          </div>
+        </div>
+
+        <div class="input-box">
+          <i class="fas fa-lock"></i>
+          <input type="password" formControlName="password" placeholder="Password" required>
+          <div *ngIf="userForm.get('password')?.touched && userForm.get('password')?.invalid">
+            <small *ngIf="userForm.get('password')?.errors?.['required']" class="text-danger">Password is
+              required</small>
+            <small *ngIf="userForm.get('password')?.errors?.['pattern']" class="text-danger">Must contain uppercase,
+              lowercase, number & special character</small>
+          </div>
+        </div>
+
+        <div class="form-options">
+          <label><input type="checkbox"> Remember me</label>
+          <a href="#">Forgot Password</a>
+        </div>
+
+        <button type="submit" class="btn">Login</button>
+      </form>
+
+      <p class="register-link">Don't have an account? <a href="#">Register here</a></p>
+
+      <div class="mobile-social-links">
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-google"></i></a>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="image-section">
+      <div class="brand mb-2">
+        <img src="assets/test_images/jodetx_white.svg" alt="Jodetx Logo" class="logo" />
+      </div>
+      <img src="assets/test_images/login4-bg.jpg" alt="Product" />
+
+
+      <div class="tab-switch desktop-only">
+        <button [class.active]="activeTab === 'login'" (click)="switchTab('login')">LOGIN</button>
+        <button [class.active]="activeTab === 'register'" (click)="switchTab('register')">REGISTER</button>
+      </div>
+
+
+      <div class="social-links desktop-only">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-google"></i></a>
+      </div>
+    </div>
+
+  </div>
+</div>

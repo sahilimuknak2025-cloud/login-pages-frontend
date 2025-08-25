@@ -1,0 +1,94 @@
+<div class="vh-100 w-100 position-relative"
+    style="background: url('assets/test_images/login1.avif') no-repeat center center; background-size: cover;">
+
+    <div class="position-absolute top-0 start-0 w-100 h-100"></div>
+
+    <div class="container h-100">
+        <div class="row h-100">
+
+            <div class="col-md-6 d-none d-md-flex flex-column justify-content-center px-5 text-white position-relative">
+                <img src="assets/test_images/jodetx-logo.svg" alt="Logo" class="mb-4" style="width: 120px;">
+                <h2 class="mt-5" style="color: aliceblue;">
+                    Join <span class="text-success">8 Million</span> Businesses that Trust <br>
+                    Jodetx to Supercharge their Business
+                </h2>
+                <ul class="mt-4 list-unstyled">
+                    <li class="mb-2">✔ 100+ Payment Methods</li>
+                    <li class="mb-2">✔ Easy Integration</li>
+                    <li class="mb-2">✔ Powerful Dashboard</li>
+                </ul>
+            </div>
+
+
+            <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
+                <div class="card shadow-lg p-4 p-md-5 rounded-4 w-100" style="max-width: 500px; z-index:1;">
+
+                    <div class="text-center mb-4">
+                        <img src="assets/test_images/jodetx-logo.svg" alt="App Logo" style="width: 80px;">
+                        <h5 class="mt-3">Welcome to Jodetx</h5>
+                    </div>
+
+                    <h4 class="fw-bold mb-3 text-center">Login</h4>
+
+                    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                        <div class="mb-3">
+                            <label>Email Address</label>
+                            <input type="email" class="form-control" formControlName="email"
+                                placeholder="Enter your email" />
+                            <div *ngIf="userForm.get('email')?.touched && userForm.get('email')?.invalid">
+                                <small *ngIf="userForm.get('email')?.errors?.['required']" class="text-danger">Email is
+                                    required.</small>
+                                <small *ngIf="userForm.get('email')?.errors?.['invalidCharacters']"
+                                    class="text-danger">Email contains invalid characters.</small>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Password</label>
+                            <div class="input-group">
+                                <input [type]="showPassword ? 'text' : 'password'" class="form-control"
+                                    formControlName="password" placeholder="Enter your password" />
+                                <span class="input-group-text" style="cursor: pointer;" (click)="togglePassword()">
+                                    <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+                                </span>
+                            </div>
+
+                            <div *ngIf="userForm.get('password')?.touched && userForm.get('password')?.invalid"
+                                class="mt-1">
+                                <small *ngIf="userForm.get('password')?.errors?.['required']" class="text-danger">
+                                    Password is required
+                                </small>
+                                <small *ngIf="userForm.get('password')?.errors?.['pattern']" class="text-danger">
+                                    Must contain uppercase, lowercase, number & special character
+                                </small>
+                            </div>
+                        </div>
+
+
+                        <div class="mb-3 text-end">
+                            <a href="/forgot-password" class="small text-decoration-none">Forgot Password?</a>
+                        </div>
+
+                        <button class="btn btn-primary w-100 fw-bold mb-3">Log In</button>
+
+                        <p class="text-center mb-3">
+                            Don’t have an account with Jodetx?
+                            <a href="/sign-up" class="text-primary text-decoration-none">Sign Up</a>
+                        </p>
+
+                        <div class="text-center my-3">or</div>
+
+                        <button type="button" class="btn btn-outline-dark w-100">Continue with Google</button>
+                    </form>
+
+                    <p class="mt-4 small text-center text-muted">
+                        By continuing you agree to our
+                        <a href="#" class="text-decoration-none">privacy policy</a> and
+                        <a href="#" class="text-decoration-none">terms of use</a>.
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+    </div>

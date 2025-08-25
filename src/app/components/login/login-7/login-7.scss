@@ -1,0 +1,43 @@
+.left {
+  background: #2c3e50;
+
+  h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  .social-btn {
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+
+    &.facebook { background: #3b5998; }
+    &.twitter { background: #1da1f2; }
+    &.google { background: #db4437; }
+
+    &:hover { opacity: 0.85; }
+  }
+}
+
+.right {
+  .tabs span {
+    cursor: pointer;
+    padding-bottom: 5px;
+  }
+
+  .tabs .active {
+    color: #4a73f3;
+    border-bottom: 2px solid #4a73f3;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 768px) {
+  .left {
+    text-align: center;
+    padding: 20px !important;
+  }
+}
