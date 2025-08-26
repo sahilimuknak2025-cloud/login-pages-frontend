@@ -9,6 +9,8 @@ import { Login5 } from './components/login/login-5/login-5';
 import { Login6 } from './components/login/login-6/login-6';
 import { Home } from './components/home/home';
 import { Login7 } from './components/login/login-7/login-7';
+import { Signup2 } from './components/signup-2/signup-2';
+import { UserTable } from './components/user-table/user-table';
 
 
 export const routes: Routes = [
@@ -28,5 +30,15 @@ export const routes: Routes = [
     {
         path: 'sign-up',
         component: SignUp
+    },
+    {
+        path: 'sign-up2',
+        component: Signup2  
+    },
+     {
+        path: 'user-table',
+        component: UserTable  
     }
+
+
 ];

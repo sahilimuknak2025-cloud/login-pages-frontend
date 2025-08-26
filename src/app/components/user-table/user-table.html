@@ -1,0 +1,101 @@
+<div class="container mt-4">
+  <div class="d-flex mb-3 gap-2">
+  <button class="btn btn-primary mb-3" (click)="fetchUsers()">Get Users</button>
+   <button class="btn btn-primary mb-3 " (click)="refreshUsers()">Refresh</button>
+   </div>
+  <table class="table table-striped table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>Sr. No</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile Number</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users; let i = index" [formGroup]="editForm">
+        <ng-container *ngIf="editIndex !== i; else editRow">
+          <td>{{ i + 1 }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.phone }}</td>
+          <td>{{ user.age }}</td>
+          <td>{{ user.gender }}</td>
+          <td>
+            <div class="d-flex">
+              <button class="btn btn-sm btn-primary me-2" (click)="editUser(i)" title="Edit">
+                <i class="bi bi-pencil-square"></i>
+              </button>
+              <button class="btn btn-sm btn-danger" (click)="openDeleteModal(user)" title="Delete">
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-template #deleteModal let-modal>
+          <div class="modal-header">
+            <h5 class="modal-title">Confirm Delete</h5>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+          </div>
+
+          <div class="modal-body" *ngIf="selectedUser">
+            <p>Are you sure want to delete this user?</p>
+            <ul class="list-group">
+              <li class="list-group-item"><strong>ID:</strong>{{ selectedUser._Id}}</li>
+              <li class="list-group-item"><strong>Name:</strong>{{ selectedUser.name}}</li>
+              <li class="list-group-item"><strong>Email:</strong>{{ selectedUser.email}}</li>
+              <li class="list-group-item"><strong>Phone:</strong>{{ selectedUser.phone}}</li>
+              <li class="list-group-item"><strong>Age:</strong>{{ selectedUser.age}}</li>
+              <li class="list-group-item"><strong>Gender:</strong>{{ selectedUser.gender}}</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" (click)="modal.dismiss()">Cancel</button>
+            <button class="btn btn-danger" (click)="confirmDelete(modal)">Delete</button>
+          </div>
+        </ng-template>
+
+        <ng-template #editRow>
+          <td>{{ i + 1 }}</td>
+          <td><input type="text" class="form-control" formControlName="name"></td>
+          <td><input type="email" class="form-control" formControlName="email">
+            <div *ngIf="editForm.get('email')?.invalid && editForm.get('email')?.touched" class="text-danger small">
+              <span *ngIf="editForm.get('email')?.errors?.['required']">Email is required</span>
+              <span *ngIf="editForm.get('email')?.errors?.['email']">Invalid email format</span>
+              <span *ngIf="editForm.get('email')?.errors?.['pattern']">Only valid characters allowed in email</span>
+            </div>
+          </td>
+          <td><input type="text" class="form-control" formControlName="phone" maxlength="10">
+            <div *ngIf="editForm.get('phone')?.invalid && editForm.get('phone')?.touched" class="text-danger small">
+              <span *ngIf="editForm.get('phone')?.errors?.['required']">Phone is required</span>
+              <span *ngIf="editForm.get('phone')?.errors?.['pattern']">Enter a valid 10 digit number</span>
+            </div>
+          </td>
+          <td><input type="number" class="form-control" formControlName="age" type="number"></td>
+          <td>
+            <select class="form-select" formControlName="gender">
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </td>
+          <td>
+            <div class="d-flex gap-2">
+              <button class="btn btn-sm btn-success me-2" (click)="submitEdit(user._id)">Submit</button>
+              <button class="btn btn-sm btn-secondary" (click)="cancelEdit()">Cancel</button>
+            </div>
+          </td>
+        </ng-template>
+      </tr>
+
+      <tr *ngIf="users.length === 0">
+        <td colspan="7" class="text-center">No users found.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

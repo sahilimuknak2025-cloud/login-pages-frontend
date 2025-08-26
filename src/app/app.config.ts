@@ -5,7 +5,7 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NzMessageService } from 'ng-zorro-antd/message';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; 
 
 
 
@@ -17,7 +17,8 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch()),
      importProvidersFrom(
       BrowserAnimationsModule,
-      NzMessageService,      
+      NzMessageService,
+      NgbModule          
   
     )
   ]
